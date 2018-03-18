@@ -1,8 +1,9 @@
 {
-    "name": "md-color-picker",
+    "name": "md-rainbow",
     "version": "0.2.6",
     "authors": [
-        "Brian Kelley <kelley.brianp@gmail.com>"
+        "Brian Kelley <kelley.brianp@gmail.com>",
+        "Hayley Tom <hayleytom94+npm@gmail.com>"
     ],
     "description": "Angular-Material inspired color picker.",
     "main": [
@@ -25,7 +26,7 @@
         "color-dialog"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/brianpkelley/md-color-picker",
+    "homepage": "https://github.com/hayzey/md-rainbow",
     "ignore": [
         "**/.*",
         "node_modules",

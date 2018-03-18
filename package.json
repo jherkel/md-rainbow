@@ -1,7 +1,7 @@
 {
-  "name": "md-color-picker",
+  "name": "md-rainbow",
   "version": "0.2.6",
-  "description": "Angular-Material inspired color picker.",
+  "description": "md-color-picker inspired color picker.",
   "main": "dist/mdColorPicker.min.js",
   "dependencies": {
     "tinycolor2": "*"
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/brianpkelley/md-color-picker"
+    "url": "https://github.com/hayzey/md-rainbow"
   },
   "keywords": [
     "angular",
@@ -44,10 +44,10 @@
     "color-chooser",
     "color-dialog"
   ],
-  "author": "Brian Kelley <kelley.brianp@gmail.com> (http://www.tastybytes.net)",
+  "author": "Hayley Tom <hayleytom94+npm@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brianpkelley/md-color-picker/issues"
+    "url": "https://github.com/hayzey/md-rainbow/issues"
   },
-  "homepage": "https://github.com/brianpkelley/md-color-picker"
+  "homepage": "https://github.com/hayzey/md-rainbow"
 }
