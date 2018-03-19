@@ -144,7 +144,7 @@ function GradientCanvasFactory( ) {
 		canvas = angular.merge( canvas, canvasTypes[type] );
 
 		return {
-			template: '<canvas width="100%" height="100%"></canvas><div class="md-color-picker-marker"></div>',
+			template: '<canvas width="100%" height="100%"></canvas><div class="md-rainbow-marker"></div>',
 			link: canvas.get,
 			controller: function() {
 			//	console.log( "mdRainbowAlpha Controller", Date.now() - dateClick );
@@ -604,7 +604,7 @@ angular.module('mdRainbow', [])
 					if ( tab && typeof( tab ) === 'string' ) {
 						/* DOM isn't fast enough for this
 
-						var tabs = $element[0].querySelector('.md-color-picker-colors').getElementsByTagName( 'md-tab' );
+						var tabs = $element[0].querySelector('.md-rainbow-colors').getElementsByTagName( 'md-tab' );
 						console.log( tabs.length );
 						*/
 						var tabName = 'mdColor' + tab.slice(0,1).toUpperCase() + tab.slice(1);
@@ -629,9 +629,9 @@ angular.module('mdRainbow', [])
 				///////////////////////////////////
 				// Variables
 				///////////////////////////////////
-				var container = angular.element( $element[0].querySelector('.md-color-picker-container') );
-				var resultSpan = angular.element( container[0].querySelector('.md-color-picker-result') );
-				var previewInput = angular.element( $element[0].querySelector('.md-color-picker-preview-input') );
+				var container = angular.element( $element[0].querySelector('.md-rainbow-container') );
+				var resultSpan = angular.element( container[0].querySelector('.md-rainbow-result') );
+				var previewInput = angular.element( $element[0].querySelector('.md-rainbow-preview-input') );
 
 				var outputFn = [
 					'toHexString',
@@ -779,10 +779,10 @@ angular.module('mdRainbow', [])
 				</div>
 
 				<div ng-repeat="(key, value) in materialColors">
-					<div ng-style="{'background': 'rgb('+value['500'].value[0]+','+value['500'].value[1]+','+value['500'].value[2]+')', height: '75px'}" class="md-color-picker-material-title" ng-class="{'dark': isDark( value['500'].value )}" ng-click="setPaletteColor($event)">
+					<div ng-style="{'background': 'rgb('+value['500'].value[0]+','+value['500'].value[1]+','+value['500'].value[2]+')', height: '75px'}" class="md-rainbow-material-title" ng-class="{'dark': isDark( value['500'].value )}" ng-click="setPaletteColor($event)">
 						<span>{{key}}</span>
 					</div>
-					<div ng-repeat="(label, color) in value track by $index" ng-style="{'background': 'rgb('+color.value[0]+','+color.value[1]+','+color.value[2]+')', height: '33px'}" class="md-color-picker-with-label" ng-class="{'dark': isDark( color.value )}" ng-click="setPaletteColor($event)">
+					<div ng-repeat="(label, color) in value track by $index" ng-style="{'background': 'rgb('+color.value[0]+','+color.value[1]+','+color.value[2]+')', height: '33px'}" class="md-rainbow-with-label" ng-class="{'dark': isDark( color.value )}" ng-click="setPaletteColor($event)">
 						<span>{{label}}</span>
 					</div>
 				</div>
@@ -794,13 +794,13 @@ angular.module('mdRainbow', [])
 				});
 
 				function createDOM() {
-					var paletteContainer = angular.element( element[0].querySelector('.md-color-picker-palette') );
-					var materialContainer = angular.element( element[0].querySelector('.md-color-picker-material-palette') );
+					var paletteContainer = angular.element( element[0].querySelector('.md-rainbow-palette') );
+					var materialContainer = angular.element( element[0].querySelector('.md-rainbow-material-palette') );
 					var paletteRow = angular.element('<div class="flex-15 layout-fill layout-row layout-align-space-between" layout-align="space-between" layout="row" layout-fill"></div>');
 					var paletteCell = angular.element('<div class="flex-10"></div>');
 
-					var materialTitle = angular.element('<div class="md-color-picker-material-title"></div>');
-					var materialRow = angular.element('<div class="md-color-picker-with-label"></div>');
+					var materialTitle = angular.element('<div class="md-rainbow-material-title"></div>');
+					var materialRow = angular.element('<div class="md-rainbow-with-label"></div>');
 
 
 
