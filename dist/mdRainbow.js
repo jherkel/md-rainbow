@@ -592,6 +592,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 				$scope.clearValue = function clearValue() {
 					ngModel.$setViewValue('');
+					ngModel.$render();
 				};
 				$scope.showColorPicker = function showColorPicker($event) {
 					if (didJustClose) {
