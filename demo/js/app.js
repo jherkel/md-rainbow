@@ -1,4 +1,4 @@
-var app = angular.module('plunker', ['ngMaterial','ngCookies', 'mdColorPicker']);
+var app = angular.module('plunker', ['ngMaterial','ngCookies', 'mdRainbow']);
 
 app.controller('MainCtrl', function($scope) {
   $scope.textConfig = {};

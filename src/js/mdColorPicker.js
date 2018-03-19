@@ -62,7 +62,7 @@ var canvasTypes = {
 			this.context.fillRect( -1, -1, this.canvas.width+2, this.height+2 );
 		},
 		extra: function() {
-			this.$scope.$on('mdColorPicker:spectrumColorChange', angular.bind( this, function( e, args ) {
+			this.$scope.$on('mdRainbow:spectrumColorChange', angular.bind( this, function( e, args ) {
 				this.currentColor = args.color;
 				this.draw();
 			}));
@@ -117,7 +117,7 @@ var canvasTypes = {
 			this.context.fillRect( -1, -1, this.canvas.width+2, this.canvas.height+2 );
 		},
 		extra: function() {
-			this.$scope.$on('mdColorPicker:spectrumHueChange', angular.bind( this, function( e, args ) {
+			this.$scope.$on('mdRainbow:spectrumHueChange', angular.bind( this, function( e, args ) {
 				this.currentHue = args.hue;
 				this.draw();
 				var markerPos = this.getMarkerCenter();
@@ -140,7 +140,7 @@ function GradientCanvasFactory( ) {
 			template: '<canvas width="100%" height="100%"></canvas><div class="md-color-picker-marker"></div>',
 			link: canvas.get,
 			controller: function() {
-			//	console.log( "mdColorPickerAlpha Controller", Date.now() - dateClick );
+			//	console.log( "mdRainbowAlpha Controller", Date.now() - dateClick );
 			}
 		};
 	}
@@ -182,7 +182,7 @@ function GradientCanvas( type, restrictX ) {
 
 
 		this.$element.on('touchstart mousedown', angular.bind(this, this.onMouseDown));
-		this.$scope.$on('mdColorPicker:colorSet', angular.bind( this, this.onColorSet ) );
+		this.$scope.$on('mdRainbow:colorSet', angular.bind( this, this.onColorSet ) );
 		if ( this.extra ) {
 			this.extra();
 		}
@@ -272,7 +272,7 @@ GradientCanvas.prototype.onMouseDown = function( e ) {
 		switch( this.type ) {
 			case 'hue':
 				var hue = this.getColorByMouse( e );
-				this.$scope.$broadcast( 'mdColorPicker:spectrumHueChange', {hue: hue});
+				this.$scope.$broadcast( 'mdRainbow:spectrumHueChange', {hue: hue});
 				break;
 			case 'alpha':
 				var alpha = this.getColorByMouse( e );
@@ -303,7 +303,7 @@ GradientCanvas.prototype.setColor = function( color ) {
 		this.$scope.color._g = color.g;
 		this.$scope.color._b = color.b;
 		this.$scope.$apply();
-		this.$scope.$broadcast('mdColorPicker:spectrumColorChange', { color: color });
+		this.$scope.$broadcast('mdRainbow:spectrumColorChange', { color: color });
 };
 
 GradientCanvas.prototype.onColorSet = function( e, args ) {
@@ -342,7 +342,7 @@ GradientCanvas.prototype.onColorSet = function( e, args ) {
 
 
 
-angular.module('mdColorPicker', [])
+angular.module('mdRainbow', [])
 	.run(['$templateCache', function ($templateCache) {
 		//icon resource should not be dependent
 		//credit to materialdesignicons.com
@@ -363,7 +363,7 @@ angular.module('mdColorPicker', [])
 		}
 	}])
 	.factory('mdColorGradientCanvas', GradientCanvasFactory )
-	.factory('mdColorPickerHistory', ['$injector', function( $injector ) {
+	.factory('mdRainbowHistory', ['$injector', function( $injector ) {
 
 		var history = [];
 		var strHistory = [];
@@ -376,7 +376,7 @@ angular.module('mdColorPicker', [])
 		}
 
 		if ( $cookies ) {
-			var tmpHistory = $cookies.getObject( 'mdColorPickerHistory' ) || [];
+			var tmpHistory = $cookies.getObject( 'mdRainbowHistory' ) || [];
 			for ( var i = 0; i < tmpHistory.length; i++ ) {
 				history.push( tinycolor( tmpHistory[i] ) );
 				strHistory.push( tmpHistory[i] );
@@ -409,7 +409,7 @@ angular.module('mdColorPicker', [])
 					strHistory.pop();
 				}
 				if ( $cookies ) {
-					$cookies.putObject('mdColorPickerHistory', strHistory );
+					$cookies.putObject('mdRainbowHistory', strHistory );
 				}
 			},
 			get: function() {
@@ -419,20 +419,20 @@ angular.module('mdColorPicker', [])
 				history = [];
 				strHistory = [];
 				if ( $cookies ) {
-					$cookies.putObject('mdColorPickerHistory', strHistory );
+					$cookies.putObject('mdRainbowHistory', strHistory );
 				}
 			}
 		};
 	}])
-	.directive('mdColorPicker', [ '$timeout', 'mdColorPickerHistory', function( $timeout, colorHistory ) {
+	.directive('mdRainbow', [ '$timeout', 'mdRainbowHistory', function( $timeout, colorHistory ) {
 
 		return {
-			templateUrl: "mdColorPicker.tpl.html",
+			templateUrl: "mdRainbow.tpl.html",
 
 			// Added required controller ngModel
 			require: '^ngModel',
 			scope: {
-				options: '=mdColorPicker',
+				options: '=mdRainbow',
 
 				// Input options
 				type: '@',
@@ -463,7 +463,7 @@ angular.module('mdColorPicker', [])
 				mdColorHsl: '=?',
 				mdColorDefaultTab: '=?'
 			},
-			controller: ['$scope', '$element', '$attrs', '$mdDialog', '$mdColorPicker', function( $scope, $element, $attrs, $mdDialog, $mdColorPicker ) {
+			controller: ['$scope', '$element', '$attrs', '$mdDialog', '$mdRainbow', function( $scope, $element, $attrs, $mdDialog, $mdRainbow ) {
 				var didJustClose = false;
 
 				// Merge Options Object with scope.  Scope will take precedence much like css vs style attribute.
@@ -535,7 +535,7 @@ angular.module('mdColorPicker', [])
 				//	dateClick = Date.now();
 				//	console.log( "CLICK OPEN", dateClick, $scope );
 
-					$mdColorPicker.show({
+					$mdRainbow.show({
 						value: $scope.value,
 						defaultValue: $scope.default,
 						random: $scope.random,
@@ -570,9 +570,9 @@ angular.module('mdColorPicker', [])
 			}
 		};
 	}])
-	.directive( 'mdColorPickerContainer', ['$compile','$timeout','$mdColorPalette','mdColorPickerHistory', function( $compile, $timeout, $mdColorPalette, colorHistory ) {
+	.directive( 'mdRainbowContainer', ['$compile','$timeout','$mdColorPalette','mdRainbowHistory', function( $compile, $timeout, $mdColorPalette, colorHistory ) {
 		return {
-			templateUrl: 'mdColorPickerContainer.tpl.html',
+			templateUrl: 'mdRainbowContainer.tpl.html',
 			scope: {
 				value: '=?',
 				default: '@',
@@ -590,7 +590,7 @@ angular.module('mdColorPicker', [])
 				mdColorDefaultTab: '='
 			},
 			controller: function( $scope, $element, $attrs ) {
-			//	console.log( "mdColorPickerContainer Controller", Date.now() - dateClick, $scope );
+			//	console.log( "mdRainbowContainer Controller", Date.now() - dateClick, $scope );
 
 				function getTabIndex( tab ) {
 					var index = 0;
@@ -716,7 +716,7 @@ angular.module('mdColorPicker', [])
 
 				$scope.changeValue = function changeValue() {
 					$scope.color = tinycolor( $scope.value );
-					$scope.$broadcast('mdColorPicker:colorSet', { color: $scope.color });
+					$scope.$broadcast('mdRainbow:colorSet', { color: $scope.color });
 				};
 
 
@@ -731,7 +731,7 @@ angular.module('mdColorPicker', [])
 					// 0 - spectrum selector
 					// 1 - sliders
 					// 2 - palette
-					$scope.$broadcast('mdColorPicker:colorSet', {color: $scope.color });
+					$scope.$broadcast('mdRainbow:colorSet', {color: $scope.color });
 
 				});
 
@@ -753,10 +753,10 @@ angular.module('mdColorPicker', [])
 				// INIT
 				// Let all the other directives initialize
 				///////////////////////////////////
-			//	console.log( "mdColorPickerContainer Controller PRE Timeout", Date.now() - dateClick );
+			//	console.log( "mdRainbowContainer Controller PRE Timeout", Date.now() - dateClick );
 				$timeout( function() {
-			//		console.log( "mdColorPickerContainer Controller Timeout", Date.now() - dateClick );
-					$scope.$broadcast('mdColorPicker:colorSet', { color: $scope.color });
+			//		console.log( "mdRainbowContainer Controller Timeout", Date.now() - dateClick );
+					$scope.$broadcast('mdRainbow:colorSet', { color: $scope.color });
 					previewInput.focus();
 					$scope.previewFocus();
 				});
@@ -848,11 +848,11 @@ angular.module('mdColorPicker', [])
 		};
 	}])
 
-	.directive( 'mdColorPickerHue', ['mdColorGradientCanvas', function( mdColorGradientCanvas ) { return new mdColorGradientCanvas('hue'); }])
-	.directive( 'mdColorPickerAlpha', ['mdColorGradientCanvas', function( mdColorGradientCanvas ) { return new mdColorGradientCanvas('alpha'); }])
-	.directive( 'mdColorPickerSpectrum', ['mdColorGradientCanvas', function( mdColorGradientCanvas ) { return new mdColorGradientCanvas('spectrum'); }])
+	.directive( 'mdRainbowHue', ['mdColorGradientCanvas', function( mdColorGradientCanvas ) { return new mdColorGradientCanvas('hue'); }])
+	.directive( 'mdRainbowAlpha', ['mdColorGradientCanvas', function( mdColorGradientCanvas ) { return new mdColorGradientCanvas('alpha'); }])
+	.directive( 'mdRainbowSpectrum', ['mdColorGradientCanvas', function( mdColorGradientCanvas ) { return new mdColorGradientCanvas('spectrum'); }])
 
-    .factory('$mdColorPicker', ['$q', '$mdDialog', 'mdColorPickerHistory', function ($q, $mdDialog, colorHistory) {
+    .factory('$mdRainbow', ['$q', '$mdDialog', 'mdRainbowHistory', function ($q, $mdDialog, colorHistory) {
 		var dialog;
 
         return {
@@ -871,7 +871,7 @@ angular.module('mdColorPicker', [])
 				options.preserveScope = options.preserveScope === undefined ? true : options.preserveScope;
 				options.skipHide = options.skipHide === undefined ? true : options.skipHide;
 
-				// mdColorPicker Properties
+				// mdRainbow Properties
 				options.mdColorAlphaChannel = options.mdColorAlphaChannel === undefined ? false : options.mdColorAlphaChannel;
 				options.mdColorSpectrum = options.mdColorSpectrum === undefined ? true : options.mdColorSpectrum;
 				options.mdColorSliders = options.mdColorSliders === undefined ? true : options.mdColorSliders;
@@ -884,7 +884,7 @@ angular.module('mdColorPicker', [])
 				options.mdColorAlphaChannel = (!options.mdColorRgb && !options.mdColorHsl) ? false : options.mdColorAlphaChannel;
 
                 dialog = $mdDialog.show({
-					templateUrl: 'mdColorPickerDialog.tpl.html',
+					templateUrl: 'mdRainbowDialog.tpl.html',
 					hasBackdrop: options.hasBackdrop,
 					clickOutsideToClose: options.clickOutsideToClose,
 

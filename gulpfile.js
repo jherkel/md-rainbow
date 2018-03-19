@@ -31,7 +31,7 @@ var ports = {
 	livereload: 3334
 };
 
-var moduleName = 'mdColorPicker';
+var moduleName = 'mdRainbow';
 var paths = {
 	demo: 'src/demo',
 	dist: 'dist/',
