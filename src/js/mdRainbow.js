@@ -1,3 +1,10 @@
+// Import templates
+import mdRainbowTemplate from '../templates/mdRainbow.html';
+import mdRainbowContainerTemplate from '../templates/mdRainbowContainer.html';
+import mdRainbowDialogTemplate from '../templates/mdRainbowDialog.html';
+
+// Import styles
+import '../less/mdRainbow.less';
 
 (function( window, angular, undefined ) {
 'use strict';
@@ -427,7 +434,7 @@ angular.module('mdRainbow', [])
 	.directive('mdRainbow', [ '$timeout', 'mdRainbowHistory', function( $timeout, colorHistory ) {
 
 		return {
-			templateUrl: "mdRainbow.tpl.html",
+			template: mdRainbowTemplate,
 
 			// Added required controller ngModel
 			require: '^ngModel',
@@ -572,7 +579,7 @@ angular.module('mdRainbow', [])
 	}])
 	.directive( 'mdRainbowContainer', ['$compile','$timeout','$mdColorPalette','mdRainbowHistory', function( $compile, $timeout, $mdColorPalette, colorHistory ) {
 		return {
-			templateUrl: 'mdRainbowContainer.tpl.html',
+			template: mdRainbowContainerTemplate,
 			scope: {
 				value: '=?',
 				default: '@',
@@ -884,7 +891,7 @@ angular.module('mdRainbow', [])
 				options.mdColorAlphaChannel = (!options.mdColorRgb && !options.mdColorHsl) ? false : options.mdColorAlphaChannel;
 
                 dialog = $mdDialog.show({
-					templateUrl: 'mdRainbowDialog.tpl.html',
+					template: mdRainbowDialogTemplate,
 					hasBackdrop: options.hasBackdrop,
 					clickOutsideToClose: options.clickOutsideToClose,
 
