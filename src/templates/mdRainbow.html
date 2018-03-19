@@ -1,0 +1,12 @@
+<div class="md-rainbow-input-container" layout="row">
+	<div class="md-rainbow-preview md-rainbow-checkered-bg" ng-click="showColorPicker($event)" ng-if="mdColorPreview">
+		<div class="md-rainbow-result" ng-style="{background: value}"></div>
+	</div>
+	<md-input-container flex>
+		<label><md-icon ng-if="icon">{{icon}}</md-icon>{{label}}</label>
+		<input type="input" ng-model="value" class='md-rainbow-input'  ng-mousedown="(openOnInput || !mdColorPreview) && showColorPicker($event)"/>
+	</md-input-container>
+	<md-button class="md-icon-button md-rainbow-clear" ng-if="mdColorClearButton && value" ng-click="clearValue();" aria-label="Clear Color">
+		<md-icon md-svg-icon="clear.svg"></md-icon>
+	</md-button>
+</div>

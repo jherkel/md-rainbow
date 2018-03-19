@@ -1,0 +1,296 @@
+md-rainbow .md-rainbow-input-container,
+[md-rainbow] .md-rainbow-input-container {
+  position: relative;
+}
+md-rainbow .md-rainbow-input-container .md-rainbow-input::-ms-clear,
+[md-rainbow] .md-rainbow-input-container .md-rainbow-input::-ms-clear {
+  display: none;
+}
+md-rainbow .md-rainbow-input-container .md-rainbow-preview,
+[md-rainbow] .md-rainbow-input-container .md-rainbow-preview {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+  position: relative;
+  top: 22px;
+  overflow: hidden;
+  background-color: #fff;
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd), linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+md-rainbow .md-rainbow-input-container .md-rainbow-preview .md-rainbow-result,
+[md-rainbow] .md-rainbow-input-container .md-rainbow-preview .md-rainbow-result {
+  width: 100%;
+  height: 100%;
+}
+md-rainbow .md-rainbow-input-container .md-rainbow-clear,
+[md-rainbow] .md-rainbow-input-container .md-rainbow-clear {
+  position: absolute;
+  bottom: 42px;
+  right: -16px;
+  color: rgba(0, 0, 0, 0.26);
+}
+.md-rainbow-container {
+  padding: 8px;
+  background: #fff;
+  outline: none;
+  height: 397px;
+  width: 347px;
+  opacity: 1;
+  overflow: hidden;
+  z-index: 1000;
+}
+.md-rainbow-container .md-rainbow-arrow {
+  border: 0 solid transparent;
+  border-right-width: 30px;
+  border-bottom-width: 0px;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  transition: border-bottom-width cubic-bezier(0.25, 0.8, 0.25, 1) 0.25s, top cubic-bezier(0.25, 0.8, 0.25, 1) 0.25s;
+}
+.md-rainbow-container canvas {
+  width: 100%;
+  height: 100%;
+}
+.md-rainbow-container .md-rainbow-preview {
+  -ms-flex: 1;
+      flex: 1;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+  margin: -8px -8px 0px;
+  position: relative;
+}
+.md-rainbow-container .md-rainbow-preview .md-rainbow-result {
+  position: absolute;
+  height: 100%;
+  opacity: 1;
+  background: #ff0000;
+}
+.md-rainbow-container .md-rainbow-preview .md-rainbow-result > input {
+  position: relative;
+  top: -15px;
+  opacity: 0;
+}
+.md-rainbow-container .md-rainbow-preview .md-rainbow-result > div {
+  position: relative;
+  width: 100%;
+}
+.md-rainbow-container .md-rainbow-preview .md-rainbow-result > div > input {
+  border-width: 0;
+  background: transparent;
+  text-align: center;
+  position: absolute;
+  top: -15px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #eee;
+  outline: none;
+  opacity: 0;
+}
+.md-rainbow-container .md-rainbow-preview .md-rainbow-result > div > input.switch {
+  transition: top cubic-bezier(0.25, 0.8, 0.25, 1) 0.25s, 0.25s opacity ease-out;
+  top: 0px;
+  opacity: 1;
+}
+.md-rainbow-container .md-rainbow-preview .md-rainbow-tabs .md-tab,
+.md-rainbow-container .md-rainbow-preview .md-rainbow-tabs md-tabs-wrapper,
+.md-rainbow-container .md-rainbow-preview .md-rainbow-tabs md-tabs-canvas,
+.md-rainbow-container .md-rainbow-preview .md-rainbow-tabs md-pagination-wrapper {
+  max-height: 28px;
+  height: 28px;
+}
+.md-rainbow-container .md-rainbow-preview .md-rainbow-tabs md-ink-bar {
+  background: rgba(255, 255, 255, 0.5);
+}
+.md-rainbow-container .md-rainbow-preview .md-rainbow-tabs .md-tab {
+  padding-top: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #eee;
+  /* hack for https://github.com/angular/material/issues/4237 */
+  max-width: none !important;
+}
+.md-rainbow-container .md-rainbow-preview .md-rainbow-tabs .md-tab.md-active {
+  background: transparent;
+}
+.md-rainbow-container .md-rainbow-preview.dark {
+  color: #333;
+}
+.md-rainbow-container .md-rainbow-preview.dark .md-rainbow-preview-input {
+  color: #333;
+}
+.md-rainbow-container .md-rainbow-preview.dark .md-tab {
+  background: rgba(0, 0, 0, 0.25);
+  color: #333;
+}
+.md-rainbow-container .md-rainbow-preview.dark .md-tab.md-active {
+  background: transparent;
+}
+.md-rainbow-container .md-rainbow-preview.dark md-ink-bar {
+  background: rgba(0, 0, 0, 0.5);
+}
+.md-rainbow-container .md-rainbow-tabs {
+  margin: 0px -8px 0;
+}
+.md-rainbow-container .md-rainbow-tabs md-tabs[md-align-tabs=bottom] {
+  padding-bottom: 0;
+}
+.md-rainbow-container .md-rainbow-tabs .md-tab,
+.md-rainbow-container .md-rainbow-tabs md-tabs-wrapper,
+.md-rainbow-container .md-rainbow-tabs md-tabs-canvas,
+.md-rainbow-container .md-rainbow-tabs md-pagination-wrapper {
+  max-height: 36px;
+  height: 36px;
+}
+.md-rainbow-container .md-rainbow-tabs .md-tab {
+  padding: 7px 24px;
+  background: transparent;
+}
+.md-rainbow-container .md-rainbow-tabs .md-tab:last-of-type {
+  margin-right: -2px;
+}
+.md-rainbow-container .md-rainbow-tabs md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
+  min-height: 298px;
+}
+.md-rainbow-container .md-rainbow-tabs md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) md-tabs-content-wrapper {
+  height: 255px;
+  margin-bottom: 8px;
+}
+.md-rainbow-container .md-rainbow-tabs md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) md-tabs-content-wrapper md-tab-content {
+  height: 255px;
+  padding: 0px 8px 0;
+}
+.md-rainbow-container .md-rainbow-tabs md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) md-tabs-content-wrapper md-tab-content [md-tabs-template] {
+  height: 100%;
+}
+.md-rainbow-container .md-rainbow-tabs.md-rainbow-colors {
+  margin: 8px -8px -8px;
+}
+.md-rainbow-container .md-rainbow-tabs.md-rainbow-colors md-ink-bar {
+  top: auto;
+}
+.md-rainbow-container .md-rainbow-tabs.md-rainbow-colors .md-tab {
+  background: rgba(0, 0, 0, 0.075);
+}
+.md-rainbow-container .md-rainbow-tabs.md-rainbow-colors .md-tab.md-active {
+  background: #fff;
+}
+.md-rainbow-container .md-rainbow-colors {
+  overflow: hidden;
+  margin-top: 8px;
+}
+.md-rainbow-container .md-rainbow-colors .md-rainbow-marker {
+  position: absolute;
+  border: 2px solid #fff;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+.md-rainbow-container .md-rainbow-colors [md-rainbow-spectrum] {
+  position: relative;
+  cursor: crosshair;
+  overflow: hidden;
+  height: 255px;
+  width: 255px;
+}
+.md-rainbow-container .md-rainbow-colors [md-rainbow-spectrum] .md-rainbow-marker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5), inset 0 0 2px 0 rgba(0, 0, 0, 0.5);
+  top: -5px;
+  left: calc(100% - 5px);
+}
+.md-rainbow-container .md-rainbow-colors [md-rainbow-hue],
+.md-rainbow-container .md-rainbow-colors [md-rainbow-alpha] {
+  position: relative;
+  cursor: crosshair;
+  overflow: hidden;
+  width: 30px;
+}
+.md-rainbow-container .md-rainbow-colors [md-rainbow-hue].md-rainbow-wide,
+.md-rainbow-container .md-rainbow-colors [md-rainbow-alpha].md-rainbow-wide {
+  width: 67px;
+}
+.md-rainbow-container .md-rainbow-colors [md-rainbow-hue] .md-rainbow-marker,
+.md-rainbow-container .md-rainbow-colors [md-rainbow-alpha] .md-rainbow-marker {
+  height: 5px;
+  width: 100%;
+  border-left: 0;
+  border-right: 0;
+  top: -2px;
+  left: 0;
+}
+.md-rainbow-container .md-rainbow-sliders md-slider.red-slider .md-track-fill {
+  background: #d01515;
+}
+.md-rainbow-container .md-rainbow-sliders md-slider.red-slider .md-thumb:after {
+  background-color: #d01515;
+  border-color: #d01515;
+}
+.md-rainbow-container .md-rainbow-sliders md-slider.green-slider .md-track-fill {
+  background: #19d015;
+}
+.md-rainbow-container .md-rainbow-sliders md-slider.green-slider .md-thumb:after {
+  background-color: #19d015;
+  border-color: #19d015;
+}
+.md-rainbow-container .md-rainbow-sliders md-slider.blue-slider .md-track-fill {
+  background: #1560d0;
+}
+.md-rainbow-container .md-rainbow-sliders md-slider.blue-slider .md-thumb:after {
+  background-color: #1560d0;
+  border-color: #1560d0;
+}
+.md-rainbow-container .md-rainbow-material-palette .md-rainbow-material-title {
+  font-size: 22px;
+  line-height: 75px;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.85);
+  text-transform: capitalize;
+}
+.md-rainbow-container .md-rainbow-material-palette .md-rainbow-material-title.dark {
+  color: rgba(255, 255, 255, 0.85);
+}
+.md-rainbow-container .md-rainbow-material-palette .md-rainbow-material-title:not(:first-child) {
+  margin-top: 16px;
+}
+.md-rainbow-container .md-rainbow-material-palette .md-rainbow-with-label {
+  font-size: 12px;
+  line-height: 33px;
+  padding: 0 5px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.md-rainbow-container .md-rainbow-material-palette .md-rainbow-with-label.dark {
+  color: rgba(255, 255, 255, 0.7);
+}
+.md-rainbow-container .md-rainbow-material-palette .md-rainbow-material-colors {
+  position: absolute;
+  transition: left cubic-bezier(0.25, 0.8, 0.25, 1) 0.25s, right cubic-bezier(0.25, 0.8, 0.25, 1) 0.25s, top cubic-bezier(0.25, 0.8, 0.25, 1) 0.25s, bottom cubic-bezier(0.25, 0.8, 0.25, 1) 0.25s;
+}
+.md-rainbow-container .md-rainbow-history > div > div {
+  height: 20px;
+  margin: 4px;
+  background-color: #fff;
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd), linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+.md-rainbow-container .md-rainbow-history > div > div > div {
+  width: 100%;
+  height: 100%;
+}
+.md-rainbow-container .md-rainbow-history button {
+  margin-top: auto;
+  margin-left: auto;
+}
+.md-rainbow-checkered-bg {
+  background-color: #fff;
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd), linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}

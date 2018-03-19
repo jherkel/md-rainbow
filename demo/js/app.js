@@ -1,4 +1,4 @@
-var app = angular.module('plunker', ['ngMaterial','ngCookies', 'mdColorPicker']);
+var app = angular.module('plunker', ['ngMaterial','ngCookies', 'mdRainbow']);
 
 app.controller('MainCtrl', function($scope) {
   $scope.textConfig = {};
@@ -29,7 +29,7 @@ app.controller('MainCtrl', function($scope) {
 
         alphaChannel: false,
         history: false,
-        defaultTab: 1
+        defaultTab: 1,
     };
     $scope.textConfig.showPreview = true;
 

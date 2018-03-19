@@ -1,18 +1,18 @@
-<div class="md-color-picker-container in" layout="column">
-	<div class="md-color-picker-arrow" ng-style="{'border-bottom-color': color.toRgbString() }"></div>
+<div class="md-rainbow-container in" layout="column">
+	<div class="md-rainbow-arrow" ng-style="{'border-bottom-color': color.toRgbString() }"></div>
 
-	<div class="md-color-picker-preview md-color-picker-checkered-bg" ng-class="{'dark': !color.isDark() || color.getAlpha() < .45}" flex="1" layout="column">
+	<div class="md-rainbow-preview md-rainbow-checkered-bg" ng-class="{'dark': !color.isDark() || color.getAlpha() < .45}" flex="1" layout="column">
 
-		<div class="md-color-picker-result" ng-style="{'background': color.toRgbString()}" flex="100" layout="column" layout-fill layout-align="center center" ng-click="focusPreviewInput( $event )">
+		<div class="md-rainbow-result" ng-style="{'background': color.toRgbString()}" flex="100" layout="column" layout-fill layout-align="center center" ng-click="focusPreviewInput( $event )">
 			<!--<span flex  layout="column" layout-align="center center">{{value}}</span>-->
 			<div flex  layout="row" layout-align="center center">
-				<input class="md-color-picker-preview-input" type="text" ng-model="value" ng-focus="previewFocus($event);" ng-blur="previewBlur()" ng-change="changeValue()" ng-keypress="previewKeyDown($event)" layout-fill />
+				<input class="md-rainbow-preview-input" type="text" ng-model="value" ng-focus="previewFocus($event);" ng-blur="previewBlur()" ng-change="changeValue()" ng-keypress="previewKeyDown($event)" layout-fill />
 			</div>
-			<div class="md-color-picker-tabs" style="width: 100%">
+			<div class="md-rainbow-tabs" style="width: 100%">
 				<md-tabs md-selected="type" md-stretch-tabs="always" md-no-bar md-no-ink md-no-pagination="true" >
-					<md-tab label="Hex" ng-disabled="color.getAlpha() !== 1" md-ink-ripple="#ffffff"></md-tab>
-					<md-tab label="RGB"></md-tab>
-					<md-tab label="HSL"></md-tab>
+					<md-tab ng-if="mdColorHex" label="Hex" ng-disabled="color.getAlpha() !== 1" md-ink-ripple="#ffffff"></md-tab>
+					<md-tab ng-if="mdColorRgb" label="RGB"></md-tab>
+					<md-tab ng-if="mdColorHsl" label="HSL"></md-tab>
 					<!--<md-tab label="HSV"></md-tab>
 					<md-tab label="VEC"></md-tab>-->
 				</md-tabs>
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 
-	<div class="md-color-picker-tabs md-color-picker-colors">
+	<div class="md-rainbow-tabs md-rainbow-colors">
 		<md-tabs md-stretch-tabs="always" md-align-tabs="bottom"  md-selected="whichPane" md-no-pagination>
 			<md-tab ng-if="mdColorSpectrum">
 				<md-tab-label>
@@ -28,9 +28,9 @@
 				</md-tab-label>
 				<md-tab-body>
 					<div layout="row" layout-align="space-between" style="height: 255px">
-						<div md-color-picker-spectrum></div>
-						<div md-color-picker-hue ng-class="{'md-color-picker-wide': !mdColorAlphaChannel}"></div>
-						<div md-color-picker-alpha class="md-color-picker-checkered-bg" ng-if="mdColorAlphaChannel"></div>
+						<div md-rainbow-spectrum></div>
+						<div md-rainbow-hue ng-class="{'md-rainbow-wide': !mdColorAlphaChannel}"></div>
+						<div md-rainbow-alpha class="md-rainbow-checkered-bg" ng-if="mdColorAlphaChannel"></div>
 					</div>
 				</md-tab-body>
 			</md-tab>
@@ -39,7 +39,7 @@
 					<md-icon md-svg-icon="tune.svg"></md-icon>
 				</md-tab-label>
 				<md-tab-body>
-					<div layout="column" flex="100" layout-fill layout-align="space-between start center" class="md-color-picker-sliders">
+					<div layout="column" flex="100" layout-fill layout-align="space-between start center" class="md-rainbow-sliders">
 						<div layout="row" layout-align="start center" layout-wrap flex layout-fill>
 							<div flex="10" layout layout-align="center center">
 								<span class="md-body-1">R</span>
@@ -88,7 +88,7 @@
 					<md-icon md-svg-icon="view_module.svg"></md-icon>
 				</md-tab-label>
 				<md-tab-body>
-					<div layout="column" layout-align="space-between start center" flex class="md-color-picker-palette">
+					<div layout="column" layout-align="space-between start center" flex class="md-rainbow-palette">
 
 					</div>
 				</md-tab-body>
@@ -98,7 +98,7 @@
 					<md-icon md-svg-icon="view_headline.svg"></md-icon>
 				</md-tab-label>
 				<md-tab-body>
-					<div layout="column" layout-fill flex class="md-color-picker-material-palette">
+					<div layout="column" layout-fill flex class="md-rainbow-material-palette">
 
 					</div>
 				</md-tab-body>
@@ -108,7 +108,7 @@
 					<md-icon md-svg-icon="history.svg"></md-icon>
 				</md-tab-label>
 				<md-tab-body layout="row" layout-fill>
-					<div layout="column" flex layout-align="space-between start" layout-wrap layout-fill class="md-color-picker-history">
+					<div layout="column" flex layout-align="space-between start" layout-wrap layout-fill class="md-rainbow-history">
 						<div layout="row" flex="80" layout-align="space-between start start" layout-wrap  layout-fill>
 							<div flex="10" ng-repeat="historyColor in history.get() track by $index">
 								<div  ng-style="{'background': historyColor.toRgbString()}" ng-click="setPaletteColor($event)"></div>
