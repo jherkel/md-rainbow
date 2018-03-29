@@ -454,6 +454,7 @@ angular.module('mdRainbow', [])
 				clickOutsideToClose: '=?',
 				skipHide: '=?',
 				preserveScope: '=?',
+				multiple: '=?',
 
 				// Advanced options
 				mdColorClearButton: '=?',
@@ -551,6 +552,7 @@ angular.module('mdRainbow', [])
 						hasBackdrop: $scope.hasBackdrop,
 						skipHide: $scope.skipHide,
 						preserveScope: $scope.preserveScope,
+						multiple: $scope.multiple,
 
 						mdColorAlphaChannel: $scope.mdColorAlphaChannel,
 						mdColorSpectrum: $scope.mdColorSpectrum,
@@ -878,6 +880,7 @@ angular.module('mdRainbow', [])
 				options.focusOnOpen = options.focusOnOpen === undefined ? false : options.focusOnOpen;
 				options.preserveScope = options.preserveScope === undefined ? true : options.preserveScope;
 				options.skipHide = options.skipHide === undefined ? true : options.skipHide;
+				options.multiple = options.multiple === undefined ? true : options.multiple;
 
 				// mdRainbow Properties
 				options.mdColorAlphaChannel = options.mdColorAlphaChannel === undefined ? false : options.mdColorAlphaChannel;
@@ -895,6 +898,7 @@ angular.module('mdRainbow', [])
 					template: mdRainbowDialogTemplate,
 					hasBackdrop: options.hasBackdrop,
 					clickOutsideToClose: options.clickOutsideToClose,
+                    multiple: options.multiple,
 
 					controller: ['$scope', 'options', function( $scope, options ) {
 							//console.log( "DIALOG CONTROLLER OPEN", Date.now() - dateClick );
