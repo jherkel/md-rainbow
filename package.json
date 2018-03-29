@@ -1,7 +1,7 @@
 {
   "name": "md-rainbow",
-  "version": "1.0.1",
-  "description": "md-color-picker inspired color picker.",
+  "version": "1.0.2",
+  "description": "Continuation of md-color-picker.",
   "main": "dist/mdRainbow.js",
   "scripts": {
     "build": "webpack --progress --colors"
