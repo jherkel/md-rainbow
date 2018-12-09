@@ -457,6 +457,8 @@ angular.module('mdRainbow', [])
 				multiple: '=?',
 
 				// Advanced options
+				okText: '@?',
+				cancelText: '@?',
 				mdColorClearButton: '=?',
 				mdColorPreview: '=?',
 
@@ -502,6 +504,8 @@ angular.module('mdRainbow', [])
 
 				// Defaults
 				// Everything is enabled by default.
+				$scope.okText = $scope.okText === undefined ? 'Select' : $scope.okText;
+				$scope.cancelText = $scope.cancelText === undefined ? 'Cancel' : $scope.cancelText;
 				$scope.mdColorClearButton = $scope.mdColorClearButton === undefined ? true : $scope.mdColorClearButton;
 				$scope.mdColorPreview = $scope.mdColorPreview === undefined ? true : $scope.mdColorPreview;
 
@@ -554,6 +558,8 @@ angular.module('mdRainbow', [])
 						preserveScope: $scope.preserveScope,
 						multiple: $scope.multiple,
 
+						okText : $scope.okText,
+						cancelText : $scope.cancelText,
 						mdColorAlphaChannel: $scope.mdColorAlphaChannel,
 						mdColorSpectrum: $scope.mdColorSpectrum,
 						mdColorSliders: $scope.mdColorSliders,
@@ -883,6 +889,8 @@ angular.module('mdRainbow', [])
 				options.multiple = options.multiple === undefined ? true : options.multiple;
 
 				// mdRainbow Properties
+				options.okText = options.okText === undefined ? 'Select' : options.okText;
+				options.cancelText = options.cancelText === undefined ? 'Cancel' : options.cancelText;
 				options.mdColorAlphaChannel = options.mdColorAlphaChannel === undefined ? false : options.mdColorAlphaChannel;
 				options.mdColorSpectrum = options.mdColorSpectrum === undefined ? true : options.mdColorSpectrum;
 				options.mdColorSliders = options.mdColorSliders === undefined ? true : options.mdColorSliders;
@@ -918,6 +926,8 @@ angular.module('mdRainbow', [])
 							$scope.default = options.defaultValue;
 							$scope.random = options.random;
 
+							$scope.okText = options.okText;
+							$scope.cancelText = options.cancelText;
 							$scope.mdColorAlphaChannel = options.mdColorAlphaChannel;
 							$scope.mdColorSpectrum = options.mdColorSpectrum;
 							$scope.mdColorSliders = options.mdColorSliders;
