@@ -475,6 +475,8 @@ angular.module('mdRainbow', [])
 			},
 			controller: ['$scope', '$element', '$attrs', '$mdDialog', '$mdRainbow', function( $scope, $element, $attrs, $mdDialog, $mdRainbow ) {
 				var didJustClose = false;
+				var defaultOkText = 'Select';
+				var defaultCancelText = 'Cancel';
 
 				// Merge Options Object with scope.  Scope will take precedence much like css vs style attribute.
 				if ( $scope.options !== undefined ) {
@@ -504,8 +506,10 @@ angular.module('mdRainbow', [])
 
 				// Defaults
 				// Everything is enabled by default.
-				$scope.okText = $scope.okText === undefined ? 'Select' : $scope.okText;
-				$scope.cancelText = $scope.cancelText === undefined ? 'Cancel' : $scope.cancelText;
+				$scope.defaultOkText = defaultOkText;
+				$scope.defaultCancelText = defaultCancelText;
+				$scope.okText = $scope.okText === undefined ? defaultOkText : $scope.okText;
+				$scope.cancelText = $scope.cancelText === undefined ? defaultCancelText : $scope.cancelText;
 				$scope.mdColorClearButton = $scope.mdColorClearButton === undefined ? true : $scope.mdColorClearButton;
 				$scope.mdColorPreview = $scope.mdColorPreview === undefined ? true : $scope.mdColorPreview;
 
