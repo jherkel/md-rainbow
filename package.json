@@ -1,6 +1,6 @@
 {
   "name": "md-rainbow",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Continuation of md-color-picker.",
   "main": "dist/mdRainbow.js",
   "scripts": {
